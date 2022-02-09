@@ -1,0 +1,27 @@
+DROP TABLE Students;
+
+CREATE TABLE Students(
+    uid INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    email_name VARCHAR(255) NOT NULL,
+    email_domain NVARCHAR(255) NOT NULL,
+    pass VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO Students(username, email_name, email_domain, pass) 
+VALUES
+    ('TravisMWise', 'travismwise', 'knights.ucf.edu', 'WakaWaka12'),
+    ('anotheruser1', 'anotheremail1', 'anotherdomain.com', 'anotherpass1'),
+    ('anotheruser2', 'anotheremail2', 'anotherdomain.com', 'anotherpass2'),
+    ('anotheruser3', 'anotheremail3', 'anotherdomain.com', 'anotherpass3'),
+    ('anotheruser4', 'anotheremail4', 'anotherdomain.com', 'anotherpass4'),
+    ('anotheruser5', 'anotheremail5', 'anotherdomain.com', 'anotherpass5'),
+    ('anotheruser6', 'anotheremail6', 'anotherdomain.com', 'anotherpass6'),
+    ('anotheruser7', 'anotheremail7', 'anotherdomain.com', 'anotherpass7'),
+    ('anotheruser8', 'anotheremail8', 'anotherdomain.com', 'anotherpass8'),
+    ('anotheruser9', 'anotheremail9', 'anotherdomain.com', 'anotherpass9'),
+    ('anotheruser10', 'anotheremail10', 'anotherdomain.com', 'anotherpass10'),
+    ('anotheruser11', 'anotheremail11', 'anotherdomain.com', 'anotherpass11'),
+    ('anotheruser12', 'anotheremail12', 'anotherdomain.com', 'anotherpass12'),
+    ('anotheruser13', 'anotheremail13', 'anotherdomain.com', 'anotherpass13');

@@ -1,0 +1,3 @@
+DROP DATABASE ceo_db;
+CREATE DATABASE ceo_db;
+use ceo_db;
