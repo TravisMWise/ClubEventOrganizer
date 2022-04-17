@@ -1,3 +1,4 @@
-DROP DATABASE ceo_db;
-CREATE DATABASE ceo_db;
-use ceo_db;
+create user 'Admin' identified by 'HeighT#157s';
+create database app;
+Use app;
+grant all privileges on App.* to 'Admin'@'%';

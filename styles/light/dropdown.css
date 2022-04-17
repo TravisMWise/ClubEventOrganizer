@@ -6,7 +6,7 @@
 }
 
 .drop-btn {
-  background-color: #2836ff;
+  background-color: #c5d0ff;
   color: white;
   font-size: 16px;
   border: none;
@@ -14,7 +14,7 @@
 }
 
 #menuIcon:hover, #menuIcon:focus {
-  background-color: #2836ff;
+  background-color: rgb(203, 152, 255);
 }
 
 .dropdown {
@@ -41,6 +41,6 @@
   display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+.dropdown a:hover {background-color: rgb(203, 152, 255);}
 
 .show {display: block;}

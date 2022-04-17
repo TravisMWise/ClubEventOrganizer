@@ -1,24 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+    include_once 'api/api_functions.php';
+    session_start();
+    date_default_timezone_set('America/New_York');
+?>
 
 <!-- Head -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
     <!-- Meta data -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page | Club Event Organizer</title>
+    <title>Database Project</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/dropdown.css">
-    <link rel="stylesheet" href="styles/forms.css">
-    <link rel="stylesheet" href="styles/welcome.css">
-    <link rel="stylesheet" href="styles/sidebar.css">
-
+    <?php
+        if (isset($_SESSION["ID"])) {
+            $prefValue = getUserWebsitePreferences($_SESSION["ID"]);
+            if ($prefValue == 1) { // Dark mode
+                echo '
+                    <link rel="stylesheet" href="styles/dark/main.css">
+                    <link rel="stylesheet" href="styles/dark/dropdown.css">
+                    <link rel="stylesheet" href="styles/dark/forms.css">
+                    <link rel="stylesheet" href="styles/dark/welcome.css">
+                    <link rel="stylesheet" href="styles/dark/sidebar.css">
+                    <link rel="stylesheet" href="styles/dark/events.css">
+                    <link rel="stylesheet" href="styles/dark/chatroom.css">
+                    <link rel="stylesheet" href="styles/dark/editingComment.css">
+                ';
+            }
+            else { // Light Mode
+                echo '
+                    <link rel="stylesheet" href="styles/light/main.css">
+                    <link rel="stylesheet" href="styles/light/dropdown.css">
+                    <link rel="stylesheet" href="styles/light/forms.css">
+                    <link rel="stylesheet" href="styles/light/welcome.css">
+                    <link rel="stylesheet" href="styles/light/sidebar.css">
+                    <link rel="stylesheet" href="styles/light/events.css">
+                    <link rel="stylesheet" href="styles/light/chatroom.css">
+                    <link rel="stylesheet" href="styles/light/editingComment.css">
+                ';
+            }
+        } else { // Default is dark mode if the user isn't logged in
+            echo '
+                <link rel="stylesheet" href="styles/light/main.css">
+                <link rel="stylesheet" href="styles/light/dropdown.css">
+                <link rel="stylesheet" href="styles/light/forms.css">
+                <link rel="stylesheet" href="styles/light/welcome.css">
+                <link rel="stylesheet" href="styles/light/sidebar.css">
+                <link rel="stylesheet" href="styles/light/events.css">
+                <link rel="stylesheet" href="styles/light/rso.css">
+                <link rel="stylesheet" href="styles/light/editingComment.css">
+            ';
+        }
+    ?>
+    
 </head>
-
 <!-- Body -->
 <body>
     <!-- Navbar -->
@@ -30,22 +68,34 @@
             </button>
             <div id="myDropdown" class="dropdown-content">
                 <?php
-                    session_start(); 
-                    if (!isset($_SESSION["uid"])) {
-                        echo '<a href="/signup.php">Sign Up</a>';
-                        echo '<a href="/login.php">Login</a>';
+                    if (!isset($_SESSION["ID"])) {
+                        echo '<a href="/signup">Sign Up</a>';
+                        echo '<a href="/login">Login</a>';
+                        echo '<a href="events">See All Events</a>';
                     } 
                     else {
-                        echo '<a href="/profile.php">Profile</a>';
-                        echo '<a href="/settings.php">Settings</a>';
-                        echo '<a href="/includes/logout.inc.php">Logout</a>';
+                        echo '<a href="createRSO.php">Create New RSO</a>';
+                        if (isAdmin($_SESSION["ID"]) || isSuperAdmin($_SESSION["ID"])) {
+                            echo '<a href="createEvent.php">Create New Event</a>';
+                        }
+                        echo '<a href="joinRSO">Join New RSO</a>';
+                        echo '<a href="events">See All Events</a>';
+                        echo '<a href="/profile">Profile</a>';
+                        echo '<a href="/settings">Settings</a>';
+                        echo '<a href="/api/logout">Logout</a>';
                     } 
                 ?>
             </div>
             <script src="/scripts/dropdown.js"></script>
         </div>
         <div class="navbar-right">
-            <a href="/index.php">Club Event Organizer</a>
-        </div>
-            
+            <a href="/index">Club Event Organizer</a>
+        </div>  
     </div>
+    
+    <div class="navbar2">
+        
+    </div>
+    <div class="event-feed">
+        
+        

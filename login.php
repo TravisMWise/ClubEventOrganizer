@@ -11,15 +11,13 @@
             echo $_GET["error"];
         }
     ?>
-    <form action="includes/login.inc.php" method="post">
-        <input class="textInput" type="text" name="username" placeholder="Username..." required autofocus>
-        <input class="textInput" type="password" name="pass" placeholder="Password..." required>
-        <input type="checkbox" name="remember" id="rememberMe" value="1" >  
-        <label for="rememberMe" id="rememberMeText">Remember me</label>
-        <p id="noAccountMessage"> 
+    <form class="forms" action="api/login.php" method="post">
+        <input class="textInput" type="text" name="Username" placeholder="Username..." required autofocus><br>
+        <input class="textInput" type="password" name="Password" placeholder="Password..." required> <br>
+        <p class="desc"> 
             Don't have an account? Sign up <a href="/signup.php">here</a>!
         </p>
-        <button type="submit" name="submit" id="signupButton">Submit</button>
+        <button type="submit" name="submit" class="submitButton">Login</button>
     </form>
 </section>
 
